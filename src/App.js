@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import { toast, ToastContainer } from "react-toastify";
+import JoinCreateRoom from './JoinCreateRoom';
+import Room from './Room';
 
-function App() {
+const App = () => {
+  const [userNo, setUserNo] = useState(0);
+  const [roomJoined, setRoomJoined] = useState(false);
+  const [user, setUser] = useState({});
+  const [users, setUsers] = useState([]);
+  const uuid = () => {
+    var S4 = () => {
+      return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+    };
+    return (
+      S4() +
+      S4() +
+      "-" +
+      S4() +
+      "-" +
+      S4() +
+      "-" +
+      S4() +
+      "-" +
+      S4() +
+      S4() +
+      S4()
+    );
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <div className="home">
+    {/* <ToastContainer />
+  
+      <JoinCreateRoom
+         uuid={uuid}
+         setRoomJoined={setRoomJoined}
+         setUser={setUser}
+      /> */}
+ 
+ <Room/>
+  </div>
+  )
 }
 
-export default App;
+export default App
